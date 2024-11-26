@@ -1,0 +1,40 @@
+<h2>Add a new Transaction</h2>
+
+<form (ngSubmit)="submitPayment()" #paymentForm="ngForm">
+    <label for="amount">Amount:</label>
+    <input type="number" name="amount" [(ngModel)]="transaction.amount" placeholder="Amount" required />
+    <label for="details">Details:</label>
+    <input type="text" name="details" [(ngModel)]="transaction.details" placeholder="Details" required />
+    <label for="taxRuleId">Tax Rule to apply:</label>
+    <select (change)="onSelectChange($event)">
+        <option *ngFor="let rule of rules" [value]="rule.id">{{ rule.name }}</option>
+    </select>
+    <button type="submit" class="btn btn-primary">Submit Payment</button>
+  </form>
+<div style="margin-top: 2rem;">
+    <h2>Transactions</h2>
+
+    <table class="table table-striped mt-3">
+      <thead>
+        <tr>
+            <th>id</th>
+          <th>Amount</th>
+          <th>Amount with taxes included</th>
+          <th>Details</th>
+          <th>Tax Rule ID</th>
+          <th>Transaction Date</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let txn of transactions">
+          <td>{{ txn.id }}</td>
+          <td>{{ txn.amount }}</td>
+          <td>{{ txn.amountAfterTax}}</td>
+          <td>{{ txn.details }}</td>
+          <td>{{ txn.taxRuleId }}</td>
+          <td>{{ txn.transactionDate }}</td>
+        </tr>
+      </tbody>
+    </table>
+</div>
+ 

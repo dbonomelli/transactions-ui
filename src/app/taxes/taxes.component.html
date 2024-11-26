@@ -1,0 +1,35 @@
+<h2>Add a new Tax Rule</h2>
+
+<form (ngSubmit)="submitPayment()" #paymentForm="ngForm">
+    <label for="name">Name:</label>
+    <input type="text" name="name" [(ngModel)]="tax.name" placeholder="Name..." required />
+    <label for="description">Details:</label>
+    <input type="text" name="description" [(ngModel)]="tax.description" placeholder="description" required />
+    <label for="rate">Tax:</label>
+    <input type="number" name="rate" [(ngModel)]="tax.rate" placeholder="Tax..." required />
+    <button type="submit" class="btn btn-primary">Submit Tax Rule</button>
+  </form>
+
+<div style="margin-top: 2rem;">
+    <h2>Transactions</h2>
+
+    <table class="table table-striped mt-3">
+      <thead>
+        <tr>
+            <th>id</th>
+          <th>Name</th>
+          <th>Description</th>
+          <th>Tax</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let txn of taxes">
+          <td>{{ txn.id }}</td>
+          <td>{{ txn.name }}</td>
+          <td>{{ txn.description }}</td>
+          <td>{{ txn.rate }}</td>
+        </tr>
+      </tbody>
+    </table>
+</div>
+ 
