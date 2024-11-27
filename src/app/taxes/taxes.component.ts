@@ -31,14 +31,18 @@ export class TaxesComponent {
   constructor(private http: HttpClient) {}
 
   submitPayment() {
-    this.sendTax(this.tax).subscribe(response => {
-      alert('Transaction successful:'+ response)
-      console.log('Transaction successful:', response);
-    }, error => {
-      alert('Transaction failed:' + error.message)
-      console.error('Transaction failed:', error);
-    });
-    this.getAllTaxes();
+    if(this.tax.name == '' || this.tax.description == '' || this.tax.rate < 0){
+      alert("All fields are required")
+    }else{
+      this.sendTax(this.tax).subscribe(response => {
+        this.getAllTaxes();
+        console.log('Transaction successful:', response);
+      }, error => {
+        alert('Transaction failed:' + error.message)
+        console.error('Transaction failed:', error);
+      });
+    }
+
   }
 
   getAllTaxes() {
