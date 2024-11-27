@@ -30,6 +30,7 @@
             <th>id</th>
           <th>Amount</th>
           <th>Amount with taxes included</th>
+          <th>Tax value</th>
           <th>Details</th>
           <th>Tax Rule ID</th>
           <th>Transaction Date</th>
@@ -40,6 +41,7 @@
           <td>{{ txn.id }}</td>
           <td>{{ txn.amount }}</td>
           <td>{{ txn.amountAfterTax}}</td>
+          <td>{{ txn.tax}}</td>
           <td>{{ txn.details }}</td>
           <td>{{ txn.taxRuleId }}</td>
           <td>{{ txn.transactionDate }}</td>
